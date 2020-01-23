@@ -1,0 +1,138 @@
+body {
+    background-image: radial-gradient(ellipse at bottom, #f3c42852 0%, #e7e5506e 100%);
+    align-items: center;
+    font-family: 'Righteous', cursive;
+  }
+
+.cell{
+    width: 36px;
+    height: 36px;
+    font-size:20px;
+    font-weight: bolder;
+    background-color: rgba(187, 228, 135, 0.973);
+    text-align: center;
+    border-radius: 3px;
+    border: 1.8px solid rgb(224, 169, 96);
+    border-right-color: rgb(196, 120, 21); 
+    border-bottom-color: rgb(196, 120, 21); 
+    transition-duration: 150ms;
+    margin:0.5px;
+    box-shadow: rgba(224, 221, 178, 0.836) 0.8px;
+}
+button{
+    font-family: 'Righteous', cursive;
+    font-size: 20px;
+    display: inline;
+}
+.button:hover{
+    cursor: pointer;
+}
+
+
+.cell:hover{
+    background-color: rgba(146, 219, 11, 0.295);
+}
+
+.revealed{
+    background-color: rgba(204, 224, 178, 0.233);
+}
+
+
+.container{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 80%;
+    min-width: 600px;
+    padding: 10px;
+    align-items: center;
+    background-image: url(img/);
+}
+
+
+.head-container-top{
+    background-image: linear-gradient(rgba(226, 206, 30, 0.486), rgba(208, 255, 0, 0.233));
+    border-radius: 10px;
+    border:0.5px solid rgba(54, 45, 5, 0.521);   
+    width:600px;
+    height: 45px;
+    padding-top: 6px;
+    display: flex;
+    flex-direction:row;
+    justify-content: space-around;
+    margin-bottom: 4.5px;
+}
+
+.choose-level{
+    background-image: linear-gradient(rgba(226, 206, 30, 0.486), rgba(208, 255, 0, 0.233));
+    border-radius: 10px;
+    border:0.5px solid rgba(54, 45, 5, 0.521);   
+    width:600px;
+    height: 45px;
+    padding-top: 6px;
+    display: flex;
+    flex-direction:row;
+    justify-content: space-around;
+}
+
+
+
+.button-hint{
+    background-color: rgba(219, 196, 94, 0.459);
+    height:35px;
+    box-shadow: 1px 1px rgba(208, 211, 53, 0.829);
+    border-radius: 6px;
+}
+
+
+
+.suggest-hint{
+    background-color: rgba(236, 223, 161, 0.849);
+}
+
+.button-smiley{
+    height:35px;
+    background-color: rgba(219, 196, 94, 0.459);
+    border-radius: 20%;
+    margin-left:0;
+}
+
+
+.time{  
+    padding-top:3px;
+    text-align:center;
+    border-radius: 5px;
+    width:90px;
+    font-size:29px ;
+    height:35px;
+    background-color: rgba(46, 36, 36, 0.932);
+    color: rgb(235, 12, 12);
+    text-decoration: rgba(236, 223, 161, 0.849) 2px 2px;
+    text-shadow: rgba(236, 223, 161, 0.849);
+}  
+
+.stepped-mine{
+    background-color: rgb(206, 52, 14);
+}
+
+.lives{
+    padding-top: 10px;
+height: 35px;
+width: 80px;
+}
+
+.button-safe-click{
+    background-color: rgba(219, 196, 94, 0.459);
+    height:35px;
+    box-shadow: 1px 1px rgba(208, 211, 53, 0.829);
+    border-radius: 6px;
+}
+
+.button-level{
+    background-color: rgba(219, 196, 94, 0.459);
+    height:35px;
+    box-shadow: 1px 1px rgba(208, 211, 53, 0.829);
+    border-radius: 6px;
+    border: rgb(206, 52, 14) solid 2px;
+}
+
