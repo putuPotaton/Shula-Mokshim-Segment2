@@ -6,26 +6,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Mine Sweeper</title>
     <link rel="stylesheet" href="css/index.css">
     <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body onload="onInit()" >
     <div class="container">
         <div class="head-container-top">
-            <button class="button button-hint" onclick="hint(this)"> hint (3 left)</button>
-            <button class="button button-safe-click" onclick="safeClick(this)"> safe click (3 left)</button>
-            <button class="button button-smiley" onclick="initGame(this)">&#128522</button>
+            <div class="btn from-right button-hint" onclick="hint(this)"> hint (3)</div>
+            <div class="btn from-right safe-click-btn" onclick="safeClick(this)"> safe click (3)</div>
+            <div class="button-smiley" onclick="initGame(this)">&#128522</div>
             <div class="lives" id="lives">💚💚💚</div>
             <div class="time"></div>
         </div>
         <div class='choose-level'>
-        <button class="button button-level" data-level="4" data-mines="2"
-            onclick="changeLevel(this)">beginner(4X4)</button>
-        <button class="button button-level" data-level="8" data-mines="12"
+        <button class="level-btn glow-on-hover" data-level="4" data-mines="2"
+            onclick="changeLevel(this)" >beginner(4X4)</button>
+        <button class="level-btn glow-on-hover" data-level="8" data-mines="12"
             onclick="changeLevel(this)">medium(8X8)</button>
-        <button class="button button-level" data-level="12" data-mines="30"
+        <button class=" level-btn glow-on-hover" data-level="12" data-mines="30"
             onclick="changeLevel(this)">boss(12X12)</button>
         </div>
         <br>
@@ -33,6 +33,7 @@
             <tbody>
             </tbody>
         </table>
+        Best Time: <span class="best-time"></span>
     </div>
 
     <script src="js/game.js"></script>
@@ -41,3 +42,5 @@
 </body>
 
 </html>
+
+<!-- onmouseover="onLevelBtnHover(this)" -->

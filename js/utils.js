@@ -187,6 +187,17 @@ function printTime() {
     seconds = (seconds < 10) ? "0" + seconds : seconds;;
     elTime.innerHTML = minutes + ':' + seconds;
 }
+function printBestTime(TS){
+    console;
+    if(TS==null){
+        return 'No best Time yet'
+    }
+    var minutes = Math.floor((TS % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((TS % (1000 * 60)) / 1000);
+    minutes = (minutes < 10) ? "0" + minutes : minutes;
+    seconds = (seconds < 10) ? "0" + seconds : seconds;;
+    return( minutes + ':' + seconds );
+}
 
 
 
@@ -215,8 +226,7 @@ function safeClick(elSafeClicksButton) {
     elSafeCell.innerText = gBoard[posIdx.idxI][posIdx.idxJ].minesAroundCount;
     elSafeCell.classList.add('revealed');
     gSafeClicksLeft--;
-    debugger;
-    elSafeClicksButton.innerText= `safe click(${gSafeClicksLeft} left)` ;
+    elSafeClicksButton.innerText= `safe click(${gSafeClicksLeft})` ;
     setTimeout(function () {
         elSafeCell.innerText = '';
         elSafeCell.classList.remove('revealed');

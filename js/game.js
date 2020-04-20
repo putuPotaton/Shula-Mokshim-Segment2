@@ -10,7 +10,9 @@ var gSafeClicksLeft;
 var gBoard = [];
 var gLevel = { size: 8, mines: 12 };
 for (var i = 4; i <= 12; i += 4) {
-    localStorage.setItem(`bestTimeLevel${i}`, Infinity);
+    if(!localStorage.getItem(`bestTimeLevel${i}`)){
+        localStorage.setItem(`bestTimeLevel${i}`, Infinity);
+    }
 }
 var gGame = {};
 var gMines = [];
@@ -20,10 +22,30 @@ var TSFirstClick = null;
 var gameTimeInterval = null;
 var gLives;
 var gElLives = document.querySelector('.lives');
-var gElSafeClicks = document.querySelector('.button-safe-click');
+var gElSafeClicks = document.querySelector('.safe-click-btn');
+
+// CR: Marked cells shouldn't be clickable.
+
+// CR: Overall great code! Love the comments, makes the programmer's life easy! keep it up.
+
+// Sprint Score: 96
 
 
+function onInit(){
+    let elFstPlaceSpan= document.querySelector('.best-time');
 
+    elFstPlaceSpan.classList.add('text-focus-in');
+    elFstPlaceSpan.style.display='none';
+    elFstPlaceSpan.innerHTML=printBestTime(getBestTime());
+    elFstPlaceSpan.style.display='inline';
+}
+
+
+function getBestTime(){
+    console.log(gLevel.size);
+    console.log(localStorage.getItem(`bestTimeLevel${gLevel.size}`));
+    return  (localStorage.getItem(`bestTimeLevel${gLevel.size}`)==='Infinity')? null: localStorage.getItem(`bestTimeLevel${gLevel.size}`);
+}
 initGame();
 
 
@@ -36,7 +58,7 @@ function initGame(elSmileyButton = null) {
     gLives = 3;
     gElLives.innerHTML = '💚💚💚';
     gSafeClicksLeft = 3;
-    gElSafeClicks.innerText = 'safe click(3 left)';
+    gElSafeClicks.innerText = 'safe click(3)';
     gIsHintMode = false;
     gMines = [];
     gHintsAvailable = 3;
@@ -49,7 +71,7 @@ function initGame(elSmileyButton = null) {
     buildBoard();
     renderBoard();
     var elButtonhint = document.querySelector('.button-hint');
-    elButtonhint.innerText = 'hint ? (3 left)';
+    elButtonhint.innerText = 'hint (3)';
 }
 
 
@@ -99,10 +121,11 @@ function cellclicked(elCell) {
     // check if this is the first cell click- if so, generate game war-zone
     if (!gGame.isOn) {
         if (gMines.length === 0) {  //indicates game hasn't initiated yet
+        // CR: Next time check if gMines.length is falsy (!gMines.length).
             gGame.isOn = true;
             buildtWarZone(cellIdxI, cellIdxJ);
             TSFirstClick = Date.now();
-            gameTimeInterval = setInterval(printTime, 100);
+            gameTimeInterval = setInterval(printTime, 1000);
             checkReveal(elCell, cellIdxI, cellIdxJ);
         } else return;
 
@@ -140,11 +163,12 @@ function cellclicked(elCell) {
 }
 
 
+    // CR: getHint would be nicer 
 function hint(elButtonHint) {
 
     if (gHintsAvailable === 0 || gGame.isOn === false) { return; }
     gHintsAvailable--;
-    elButtonHint.innerText = `hint ? (${gHintsAvailable} left)`;
+    elButtonHint.innerText = `hint (${gHintsAvailable})`;
     gIsHintMode = true;
 }
 
@@ -177,5 +201,6 @@ function changeLevel(elbutton) {
     clearInterval(gameTimeInterval);
     gLevel.size = +elbutton.getAttribute('data-level');
     gLevel.mines = +elbutton.getAttribute('data-mines');
+    onInit();
     initGame();
 }
